@@ -27,6 +27,10 @@ Also will communicate with DB on postgresSQL container throw configMap to get th
 Sidekiq will use the same volume of drkiq because this container will use the same repo (source code) that drkiq will use
 Also, sidekiq will can communicate with redis and DB throw the same configMap
 
+## Rails Repo:
+We need to exec some command to init our rails project we can attach handlers to Container lifecycle events. to exec some command after POD start
+We need to reset and migrate DB 
+We need to generate a Pages controller with a home and add a new job
 
 ## NOTES:
 we need to isolate the source code of rails project outside the image itself (because if we made any change on the project we need to rebuild the image and update the kubernetes deployment)
