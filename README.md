@@ -37,11 +37,11 @@ we need to isolate the source code of rails project outside the image itself (be
 so we can make the source  code in a separated repo that will be pulled in the directory that will be shared with drkiq and sidekiq deployment (so you must pull rails project in /drkiq/ on the node before start any deployment (you can change /drkiq/ on node but you need to update the drkiq PV yml file also))
 we will skip this step because we made a demo only so we edit drkiq-deployment.yaml and sidekiq-deployment.yaml and change mountPath to - mountPath: /drkiq-pro/ or any other name that not document root
 
-#To create all Services, Deployment, PV, PVCs and configmaps
+#To create all Services, Deployment, PV, PVCs and configmaps:
 kubectl create -f configMap.yaml,drkiq-pv.yaml,postgres-pvc.yaml,redis-deployment.yaml,redis-service.yaml,drkiq-deployment.yaml,drkiq-service.yaml,postgres-pv.yaml,redis-pvc.yaml,sidekiq-deployment.yaml,drkiq-pvc.yaml,postgres-deployment.yaml,postgres-service.yaml,redis-pv.yaml
 
-#To get all Services, Deployment, PV, PVCs and configmaps
+#To get all Services, Deployment, PV, PVCs and configmaps:
 kubectl get service ; kubectl get deployment ;kubectl get pv ; kubectl get pvc ; kubectl get configmap
 
-#To delete all Services, Deployment, PV, PVCs and configmaps
+#To delete all Services, Deployment, PV, PVCs and configmaps:
 kubectl delete deployment drkiq postgres redis sidekiq ; kubectl delete service drkiq postgres redis ;kubectl delete pvc drkiq-postgres drkiq-redis drkiq sidekiq ; kubectl delete pv drkiq-postgres drkiq-redis drkiq sidekiq ;kubectl delete configmap vars
