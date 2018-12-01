@@ -23,6 +23,14 @@ spec:
         - sidekiq
         - -C
         - config/sidekiq.yml
+
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "rake db:reset"]
+              command: ["/bin/sh", "-c", "rake db:migrate"]
+              command: ["/bin/sh", "-c", "rails g controller Pages home"]
+              command: ["/bin/sh", "-c", "rails g job counter"]
         env:
         - name: DATABASE_URL
           valueFrom:
@@ -59,7 +67,7 @@ spec:
         resources: {}
 
         volumeMounts:
-        - mountPath: /drkiq/
+        - mountPath: /drkiq-pro/
           name: drkiq
       restartPolicy: Always
       volumes:

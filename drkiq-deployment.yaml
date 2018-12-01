@@ -54,7 +54,7 @@ spec:
         - containerPort: 8000
         resources: {}
         volumeMounts:
-        - mountPath: /drkiq/
+        - mountPath: /drkiq-pro/
           name: drkiq
       restartPolicy: Always
       volumes:
