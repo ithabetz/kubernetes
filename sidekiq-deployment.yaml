@@ -1,0 +1,70 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+  creationTimestamp: null
+  labels:
+    io.rails.service: sidekiq
+  name: sidekiq
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.rails.service: sidekiq
+    spec:
+      containers:
+      - args:
+        - bundle
+        - exec
+        - sidekiq
+        - -C
+        - config/sidekiq.yml
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: vars
+              key: DATABASE_URL
+        - name: LISTEN_ON
+          valueFrom:
+            configMapKeyRef:
+              name: vars
+              key: LISTEN_ON
+        - name: WORKER_PROCESSES
+          valueFrom:
+            configMapKeyRef:
+              name: vars
+              key: WORKER_PROCESSES
+        - name: SECRET_TOKEN
+          valueFrom:
+            configMapKeyRef:
+              name: vars
+              key: SECRET_TOKEN
+        - name: JOB_WORKER_URL
+          valueFrom:
+            configMapKeyRef:
+              name: vars
+              key: JOB_WORKER_URL
+        - name: CACHE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: vars
+              key: CACHE_URL
+        image: ithabetz/img:sidekiqv3
+        name: sidekiq
+        resources: {}
+
+        volumeMounts:
+        - mountPath: /drkiq/
+          name: drkiq
+      restartPolicy: Always
+      volumes:
+      - name: drkiq
+        persistentVolumeClaim:
+          claimName: drkiq
+
+status: {}
