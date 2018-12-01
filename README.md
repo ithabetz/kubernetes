@@ -5,9 +5,11 @@ then push them to public repo ithabetz/img:drkiq and ithabetz/img:sidekiq
 
 kubernetes:
 We have a kubernetes cluster contains master machine and one node machine
+Check file Diagram.png that explain all Services, Deployment, PV, PVCs, and configmaps.
+
 
 configMap:
-I used this service to pass the env	variables to the container that contains the DB credentials and listener port and other variables
+I used this service to pass the env variables to the container that contains the DB credentials and listener port and other variables
 
 PostgreSQL:
 create PV volume from path /drkiq-Postgres then create claim volume from PV volume this volume will store the data of PostgreSQL database
