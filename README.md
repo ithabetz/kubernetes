@@ -4,8 +4,8 @@ Genrate Ruby on rails project
 Create Dockerfile (Docker-Files/Dockerfile)
 Create docker-compose.yml (Docker-Files/docker-compose.yml)
 
-# AWS#
-All this part complete on AWS EC2 and you can access this container from this link https://www.hostersstack.com/ that secured with SSL certificate that implement on ELB we can add auto-scale if havy traffic happened scale new container (but this just a demo :D )
+# AWS #
+All this part complete on AWS EC2 and you can access this container from this link https://www.hostersstack.com/ that secured with SSL certificate and implement on ELB we can add auto-scale if havy traffic happened scale new container (but this just a demo :D )
 
 # Countuse Integration #
 # Jenkins #
@@ -15,15 +15,15 @@ You can find the simple  Jenkins-Pipeline file that responsible for deploy new c
 # kubernetes #
 We have a kubernetes cluster contains master machine and one node machine
 
-# Docker Images#
-First, I create the image of drkiq and sidekiq from Dockerfile given in article throw docker-compose.yml file
-then push them to public repo ithabetz/img:drkiq and ithabetz/img:sidekiq
+# Docker Images #
+First, I create the image of drkiq and sidekiq from Dockerfile
+then push them to public repo ithabetz/img:drkiqv3 and ithabetz/img:sidekiqv3
 
 ### configMap:
 I used this service to pass the env	variables to the container that contains the DB credentials and listener port and other variables
 
 ### PostgreSQL:
-create PV volume from path /drkiq-Postgres then create claim volume from PV volume this volume will store the data of PostgreSQL database
+create PV volume from path /drkiq-postgres then create claim volume from PV volume this volume will store the data of PostgreSQL database
 PostgreSQL service that communicates with the pod that generate container itself that will act as DB server
 
 ### Redis:
