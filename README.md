@@ -14,6 +14,7 @@ You can find the simple  Jenkins-Pipeline file that responsible for deploy new c
 
 # kubernetes #
 We have a kubernetes cluster contains master machine and one node machine
+check Diagram for all kubernetes components (K8S/Diagram.png)
 
 # Docker Images #
 First, I create the image of drkiq and sidekiq from Dockerfile
