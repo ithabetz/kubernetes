@@ -1,46 +1,17 @@
 node
 {
-        stage('Clone Jobzella-V-3.5 Backend')
+        stage('Clone Rails Repo')
         {
-            git credentialsId: 'iThabetZ', url: 'https://iThabetZz@bitbucket.org/jobzella/jobzella-v-3.5.git'
-            //git branch: 'staging', credentialsId: 'iThabetZ', url: 'https://iThabetZz@bitbucket.org/jobzella/jobzella-v-3.5.git'
+            git credentialsId: 'iThabetZ', url: 'https://iThabetZz@bitbucket.org/iThabetZ/jobzella-v-3.5.git'
         }
-        
-        stage ('Start Docker Container')
-        {
-            sh '''docker start refact'''
-        }
-        
-        stage ('Composer Install')
-        {
-            sh '''docker exec refact /bin/bash -c /build.sh'''
-        }
-        
-        stage ('Run Phpunit Tests')
-        {
-            //sh '''rm /var/lib/jenkins/workspace/jobzella-v-3.5/Modules/User/Jobs/Test.php'''
-            //sh '''docker exec refact /bin/bash -c /var/www/html/jobzella-v-3.5/vendor/bin/phpunit'''
-            //sh '''docker exec refact /bin/bash -c /unit.sh'''
-        }
-        
-        stage ('Deploy phpunit dashboard')
-        {
-            sh '''rsync -arvh /var/lib/jenkins/workspace/jobzella-v-3.5/tests/build/coverage/ root@34.247.111.248:/var/www/html/reports/'''
-        }
-        
+      
         stage ('Deploy on STG')
         {
-            sh '''rsync -arvh . root@34.247.111.248:/var/www/html/jobzella-v-3.5'''
+            sh '''rsync -arvh . root@SERVER_IP:/home/ubuntu/rails/'''
         }
         
-        stage ( 'Change Permission')
-        {
-            sh '''ssh root@34.247.111.248 screen -d -m -L chown www-data:www-data /var/www/html/jobzella-v-3.5/ -R'''
-            sh '''ssh root@34.247.111.248 screen -d -m -L docker exec refact /bin/bash -c /build.sh'''
-        }
-
         stage ('Mailing')
         {
-            mail bcc: '', body: "Jobzella v-3.5 Deployment Success also you can see the phpunit status from http://reports.jbz.la:8040/dashboard.html ", cc: '', from: '', replyTo: '', subject: 'Jobzella V-3.5 Deployment Success', to: 'mohamed.thabet@jobzella.com,mohamed.emad@jobzella.com,shady.beshay@jobzella.com,kamal.magdy@jobzella.com'
+            mail bcc: '', body: "Deploy new version of rails project", cc: '', from: '', replyTo: '', subject: 'Rails Deployment Success', to: 'ithabetzz@gmail.com'
         }
 }
