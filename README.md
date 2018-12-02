@@ -1,13 +1,23 @@
 # Docker #
-First Genrate Ruby on rails project 
+First part of the task dockerizng the rails project
+Genrate Ruby on rails project
+Create Dockerfile (Docker-Files/Dockerfile)
+Create docker-compose.yml (Docker-Files/docker-compose.yml)
 
-# Docker #
-First, I create the image of drkiq and sidekiq from Dockerfile given in article throw docker-compose.yml file
-then push them to public repo ithabetz/img:drkiq and ithabetz/img:sidekiq
+# AWS#
+All this part complete on AWS EC2 and you can access this container from this link https://www.hostersstack.com/ that secured with SSL certificate that implement on ELB that autoscal if havy traffic happened
+//Countuse Integration
 
+# Jenkins #
+All of this environment deployed from Jenkins CI that also trigger any repo updates then building this project to ensure that the stg srv run the latest version of the app
+You can find the Jenkins-Pipeline file that responsible for deploy new code on the stg srv (Jenkins/Pipeline)
 
 # kubernetes #
 We have a kubernetes cluster contains master machine and one node machine
+
+# Docker Images#
+First, I create the image of drkiq and sidekiq from Dockerfile given in article throw docker-compose.yml file
+then push them to public repo ithabetz/img:drkiq and ithabetz/img:sidekiq
 
 ### configMap:
 I used this service to pass the env	variables to the container that contains the DB credentials and listener port and other variables
