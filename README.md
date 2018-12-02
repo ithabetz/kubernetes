@@ -1,4 +1,7 @@
 # Docker #
+First Genrate Ruby on rails project 
+
+# Docker #
 First, I create the image of drkiq and sidekiq from Dockerfile given in article throw docker-compose.yml file
 then push them to public repo ithabetz/img:drkiq and ithabetz/img:sidekiq
 
