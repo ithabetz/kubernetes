@@ -1,13 +1,15 @@
 # Docker #
-First Genrate Ruby on rails project 
-
-# Docker #
-First, I create the image of drkiq and sidekiq from Dockerfile given in article throw docker-compose.yml file
-then push them to public repo ithabetz/img:drkiq and ithabetz/img:sidekiq
+First Genrate Ruby on rails project
+Create Dockerfile (Docker-Files/Dockerfile)
+Create docker-compose.yml (Docker-Files/docker-compose.yml)
 
 
 # kubernetes #
 We have a kubernetes cluster contains master machine and one node machine
+
+# Docker Images#
+First, I create the image of drkiq and sidekiq from Dockerfile given in article throw docker-compose.yml file
+then push them to public repo ithabetz/img:drkiq and ithabetz/img:sidekiq
 
 ### configMap:
 I used this service to pass the env	variables to the container that contains the DB credentials and listener port and other variables
