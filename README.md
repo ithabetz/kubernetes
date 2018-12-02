@@ -5,12 +5,12 @@ Create Dockerfile (Docker-Files/Dockerfile)
 Create docker-compose.yml (Docker-Files/docker-compose.yml)
 
 # AWS#
-All this part complete on AWS EC2 and you can access this container from this link https://www.hostersstack.com/ that secured with SSL certificate that implement on ELB that autoscal if havy traffic happened
-//Countuse Integration
+All this part complete on AWS EC2 and you can access this container from this link https://www.hostersstack.com/ that secured with SSL certificate that implement on ELB we can add auto-scale if havy traffic happened scale new container (but this just a demo :D )
 
+# Countuse Integration #
 # Jenkins #
 All of this environment deployed from Jenkins CI that also trigger any repo updates then building this project to ensure that the stg srv run the latest version of the app
-You can find the Jenkins-Pipeline file that responsible for deploy new code on the stg srv (Jenkins/Pipeline)
+You can find the simple  Jenkins-Pipeline file that responsible for deploy new code on the stg srv (Jenkins/Pipeline)
 
 # kubernetes #
 We have a kubernetes cluster contains master machine and one node machine
